@@ -26,13 +26,13 @@ public class BookController {
 
     @Autowired
     private IBookService service = new BookServiceImpl();
-
-    @GetMapping("")
+    
+    @GetMapping("")    
     public List<Book> list(){
         return service.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}")    
     public ResponseEntity<?> detail(@PathVariable Long id){
         Optional<Book> optionalBook = service.findById(id);
 
