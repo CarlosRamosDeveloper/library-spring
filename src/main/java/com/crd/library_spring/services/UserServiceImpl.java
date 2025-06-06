@@ -16,21 +16,25 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private IUserRepository userRepository;
 
+    @Override
     @Transactional(readOnly = true)
     public List<User> findAll(){
         return (List<User>) userRepository.findAll();
     }
     
+    @Override
     @Transactional(readOnly = true)
     public Optional<User> findById(Long id) {            
         return userRepository.findById(id);
     }
 
+    @Override
     @Transactional
     public User save(User user){
         return userRepository.save(user);
     }
     
+    @Override
     @Transactional
     public Optional<User> update(Long id, User user){
         Optional<User> userDb = userRepository.findById(id);
@@ -43,6 +47,7 @@ public class UserServiceImpl implements IUserService {
         return userDb;
     }
 
+    @Override
     @Transactional
     public Optional<User> delete(Long id){
         Optional<User> userDb = userRepository.findById(id);
