@@ -2,3 +2,8 @@ INSERT INTO books (name, isbn, quantity) VALUES ("El señor de los anillos: La c
 INSERT INTO books (name, isbn, quantity) VALUES ("El señor de los anillos: Las dos torres", "973-543-12354-2-3",10)
 INSERT INTO books (name, isbn, quantity) VALUES ("El señor de los anillos: El retorno del rey", "973-941-08142-7-1",2)
 INSERT INTO books (name, isbn, quantity) VALUES ("El Hobbit", "973-521-10942-5-1",8)
+INSERT INTO users (username) VALUES ("Carlos")
+INSERT INTO users (username) VALUES ("Raúl")
+INSERT INTO users (username) VALUES ("Isaac")
+INSERT INTO users (username) VALUES ("Eduardo")
+INSERT INTO users (username) VALUES ("Pablo")

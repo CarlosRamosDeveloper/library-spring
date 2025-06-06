@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/books")
 public class BookController {
 
     @Autowired
@@ -45,8 +45,7 @@ public class BookController {
     
 
     @PostMapping("")
-    public ResponseEntity<?> create(@RequestBody Book book){
-        
+    public ResponseEntity<?> create(@RequestBody Book book){        
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(book));
     }    
 
