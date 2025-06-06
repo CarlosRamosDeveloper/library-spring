@@ -1,0 +1,4 @@
+INSERT INTO books (name, isbn, quantity) VALUES ("El señor de los anillos: La comunidad del anillo", "973-542-14293-5-9",5)
+INSERT INTO books (name, isbn, quantity) VALUES ("El señor de los anillos: Las dos torres", "973-543-12354-2-3",10)
+INSERT INTO books (name, isbn, quantity) VALUES ("El señor de los anillos: El retorno del rey", "973-941-08142-7-1",2)
+INSERT INTO books (name, isbn, quantity) VALUES ("El Hobbit", "973-521-10942-5-1",8)
