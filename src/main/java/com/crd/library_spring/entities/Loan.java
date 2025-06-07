@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,19 +19,22 @@ public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private User user;    
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Book book;
-    @Column(name = "rental_date")
+    @Column(name = "rental_date")        
     private LocalDateTime rentalDate;
     @Column(name = "return_date")
     private LocalDateTime returnDate;
+    @Column(name = "active_rent")
+    private Boolean activeRent;    
     
     public Loan() {
         Date currentDate = new Date();
         rentalDate = currentDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
         returnDate = rentalDate.plusDays(5);
+        activeRent = true;
     }
     
     public Long getId() {
@@ -68,5 +72,27 @@ public class Loan {
         return this;
     }
 
+    public Boolean getActiveRent() {
+        return activeRent;
+    }
+
+    public void setActiveRent(Boolean activeRent) {
+        this.activeRent = activeRent;
+    }
+
+    public void rentABook(){    
+        //TODO: No se descuentan los libros en la BBDD al alquiler el libro    
+        if(book.getCurrentQuantity()>0){
+            book.decreaseCurrentQuantity();  
+            setActiveRent(true);  
+        }
+        //TODO tirar un error "No hay suficientes libros"
+    }
+
+    public void returnABook(){
+        book.increaseCurrentQuantity();
+        setActiveRent(false);  
+    }
+        
     
 }

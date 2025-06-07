@@ -41,7 +41,7 @@ public class BookServiceImpl implements IBookService {
         if(bookDb.isPresent()){
             Book b = bookDb.get();
             b.setName(book.getName());
-            b.setQuantity(book.getQuantity());
+            b.setCurrentQuantity(book.getCurrentQuantity());
             b.setIsbn(book.getIsbn());
         }
 
@@ -57,5 +57,4 @@ public class BookServiceImpl implements IBookService {
 
         return bookDb;
     }
-    
 }
