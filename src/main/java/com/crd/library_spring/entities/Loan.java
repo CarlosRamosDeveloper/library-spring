@@ -28,13 +28,13 @@ public class Loan {
     @Column(name = "return_date")
     private LocalDateTime returnDate;
     @Column(name = "active_rent")
-    private Boolean activeRent;    
+    private Boolean activeRent = false;
     
     public Loan() {
         Date currentDate = new Date();
         rentalDate = currentDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-        returnDate = rentalDate.plusDays(5);
-        activeRent = true;
+        returnDate = rentalDate.plusDays(5);   
+        activeRent = false;     
     }
     
     public Long getId() {
@@ -81,16 +81,20 @@ public class Loan {
     }
 
     public void rentABook(){     
-        if(book.getCurrentQuantity()>0){
+        if(book.getCurrentQuantity()>0 && !activeRent){
             book.decreaseCurrentQuantity();  
             setActiveRent(true);  
         }
-        //TODO tirar un error "No hay suficientes libros"
+        //TODO tirar un error "No hay suficientes existencias para alquilar"
     }
 
     public void returnABook(){
-        book.increaseCurrentQuantity();
-        setActiveRent(false);  
+        if (activeRent) {
+            book.increaseCurrentQuantity();
+            setActiveRent(false);  
+        }
+        //TODO: Tirar un error "El libro ya ha sido devuelto"
+        
     }
         
     
