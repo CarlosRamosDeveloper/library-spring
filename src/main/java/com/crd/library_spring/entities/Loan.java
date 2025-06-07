@@ -1,24 +1,36 @@
 package com.crd.library_spring.entities;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name="loans")
 public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne
     private User user;    
+    @ManyToOne
     private Book book;
     @Column(name = "rental_date")
-    private Date rentalDate;
+    private LocalDateTime rentalDate;
     @Column(name = "return_date")
-    private Date returnDate;
+    private LocalDateTime returnDate;
     
     public Loan() {
+        Date currentDate = new Date();
+        rentalDate = currentDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        returnDate = rentalDate.plusDays(5);
     }
     
     public Long getId() {
@@ -41,17 +53,17 @@ public class Loan {
         this.book = book;
         return this;
     }
-    public Date getRentalDate() {
+    public LocalDateTime getRentalDate() {
         return rentalDate;
     }
-    public Loan setRentalDate(Date rentalDate) {
+    public Loan setRentalDate(LocalDateTime rentalDate) {
         this.rentalDate = rentalDate;
         return this;
     }
-    public Date getReturnDate() {
+    public LocalDateTime getReturnDate() {
         return returnDate;
     }
-    public Loan setReturnDate(Date returnDate) {
+    public Loan setReturnDate(LocalDateTime returnDate) {
         this.returnDate = returnDate;
         return this;
     }
