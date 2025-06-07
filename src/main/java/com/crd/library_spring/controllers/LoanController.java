@@ -41,9 +41,11 @@ public class LoanController {
     public ResponseEntity<?> create(@RequestBody Loan loan, @RequestHeader int userId, @RequestHeader int bookId){             
         Optional<User> user = userService.findById(Long.valueOf(userId));        
         Optional<Book> book = bookService.findById(Long.valueOf(bookId));
+        
         user.ifPresent(u -> loan.setUser(u));
         book.ifPresent(b -> loan.setBook(b));
-        
+        loan.rentABook();
+
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(loan));
     }
 

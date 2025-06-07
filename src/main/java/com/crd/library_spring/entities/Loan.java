@@ -80,8 +80,7 @@ public class Loan {
         this.activeRent = activeRent;
     }
 
-    public void rentABook(){    
-        //TODO: No se descuentan los libros en la BBDD al alquiler el libro    
+    public void rentABook(){     
         if(book.getCurrentQuantity()>0){
             book.decreaseCurrentQuantity();  
             setActiveRent(true);  
