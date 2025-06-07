@@ -76,6 +76,19 @@ public class LoanController {
         return ResponseEntity.notFound().build();
     }
 
+    @PutMapping("/{id}/return")
+    public ResponseEntity<?> returnABook(@PathVariable Long id){
+        Optional<Loan> loanDb = service.findById(id);
+        
+        if(loanDb.isPresent()){
+            loanDb.get().returnABook();
+            service.update(id, loanDb.get());
+            return ResponseEntity.status(HttpStatus.CREATED).body(loanDb.orElseThrow());
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         Optional<Loan> optionalUser = service.delete(id);
