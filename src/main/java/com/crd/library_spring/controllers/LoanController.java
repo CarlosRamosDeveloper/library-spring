@@ -42,11 +42,15 @@ public class LoanController {
         Optional<User> user = userService.findById(Long.valueOf(userId));        
         Optional<Book> book = bookService.findById(Long.valueOf(bookId));
         
-        user.ifPresent(u -> loan.setUser(u));
-        book.ifPresent(b -> loan.setBook(b));
-        loan.rentABook();
+        if (book.get().getCurrentQuantity()>0){
+            user.ifPresent(u -> loan.setUser(u));
+            book.ifPresent(b -> loan.setBook(b));
+            loan.rentABook();
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(loan));
+            return ResponseEntity.status(HttpStatus.CREATED).body(service.save(loan));
+        }
+
+        return ResponseEntity.notFound().build();
     }
 
     @GetMapping("")
@@ -80,7 +84,7 @@ public class LoanController {
     public ResponseEntity<?> returnABook(@PathVariable Long id){
         Optional<Loan> loanDb = service.findById(id);
         
-        if(loanDb.isPresent()){
+        if(loanDb.isPresent() && loanDb.get().getActiveRent()){
             loanDb.get().returnABook();
             service.update(id, loanDb.get());
             return ResponseEntity.status(HttpStatus.CREATED).body(loanDb.orElseThrow());
