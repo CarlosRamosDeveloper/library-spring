@@ -42,11 +42,8 @@ public class LoanController {
         Optional<User> user = userService.findById(Long.valueOf(userId));        
         Optional<Book> book = bookService.findById(Long.valueOf(bookId));
         
-        if (book.get().getCurrentQuantity()>0){
-            user.ifPresent(u -> loan.setUser(u));
-            book.ifPresent(b -> loan.setBook(b));
-            loan.rentABook();
-
+        if (book.get().getCurrentQuantity()>0 && user.isPresent() && book.isPresent()){
+            saveIntoDb(loan, user.get(), book.get());
             return ResponseEntity.status(HttpStatus.CREATED).body(service.save(loan));
         }
 
@@ -102,5 +99,21 @@ public class LoanController {
         }
 
         return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/seed")
+        public void populateDB(){                  
+        saveIntoDb(new Loan(), userService.findById(1L).get(), bookService.findById(1L).get());
+        saveIntoDb(new Loan(), userService.findById(2L).get(), bookService.findById(2L).get());
+        saveIntoDb(new Loan(), userService.findById(3L).get(), bookService.findById(3L).get());
+        saveIntoDb(new Loan(), userService.findById(4L).get(), bookService.findById(4L).get());
+        saveIntoDb(new Loan(), userService.findById(2L).get(), bookService.findById(1L).get());
+    }
+
+    public void saveIntoDb(Loan loan, User user, Book book){
+        loan.setUser(user);
+        loan.setBook(book);
+        loan.rentABook();
+        service.save(loan);
     }
 }
