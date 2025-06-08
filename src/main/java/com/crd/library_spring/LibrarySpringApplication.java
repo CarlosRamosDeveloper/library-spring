@@ -9,4 +9,8 @@ public class LibrarySpringApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LibrarySpringApplication.class, args);		
 	}
+	//TODO: Agregar validaciones a los controladores
+	//TODO: Agregar testing
+	//TODO: Agregar documentación de los endpoints
+	//TODO: Agregar el readme
 }
