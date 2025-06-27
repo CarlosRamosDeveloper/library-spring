@@ -33,4 +33,5 @@ public class LibrarySpringApplication {
 	//TODO: Agregar documentación de los endpoints
 	//TODO: Agregar el readme^
 	//TODO: Revisar el tema de los CORS en spring
+	//TODO: Buscar acerca del rate limiting
 }
