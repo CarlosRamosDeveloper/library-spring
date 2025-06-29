@@ -102,7 +102,7 @@ public class LoanController {
     }
 
     @PostMapping("/seed")
-        public void populateDB(){                  
+    public void populateDB(){                  
         saveIntoDb(new Loan(), userService.findById(1L).get(), bookService.findById(1L).get());
         saveIntoDb(new Loan(), userService.findById(2L).get(), bookService.findById(2L).get());
         saveIntoDb(new Loan(), userService.findById(3L).get(), bookService.findById(3L).get());
