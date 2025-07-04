@@ -25,3 +25,6 @@ This project is still in development
 ### Backend: Spring boot
 ### Database: MySQL
 ### Virtualization: Docker Compose
+
+## Next steps
+### Frontend: React
