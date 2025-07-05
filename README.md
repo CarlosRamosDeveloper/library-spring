@@ -8,31 +8,31 @@ This project is still in development
 
     ``` bash
 
-        ./mvnw clean package -P prod -DskipTests
+    ./mvnw clean package -P prod -DskipTests
     ```
 
 2. Clean old containers
 
     ``` bash
-        docker-compose down
+    docker-compose down
     ```
 
 3. Build containers
 
     ``` bash
-        docker-compose build
+    docker-compose build
     ```
 
 4. Start Virtualization
 
     ``` bash
-        docker-compose up
+    docker-compose up
     ```
 
 ## Documentation
 
 ``` url
-apiPathUrl/swagger.html
+/swagger.html
 ```
 
 ## Stack
