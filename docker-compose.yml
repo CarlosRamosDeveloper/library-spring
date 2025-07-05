@@ -15,12 +15,11 @@ services:
       sh -c "until nc -z mysql_db 3306; do echo 'Waiting for MySQL...'; sleep 2; done;
       java -jar app.jar"
   mysql_db: 
-    container_name: mysql_db
-    image: mysql:latest
+    container_name: library_db
+    image: mysql    
     restart: always
     ports:
       - 3306:3306
     environment:
       - MYSQL_DATABASE=db_library_spring
       - MYSQL_ROOT_PASSWORD=asd123123
-
