@@ -2,7 +2,7 @@
 
 This project is still in development
 
-## * Setup
+## Setup
 
 1. Create .jar
 
