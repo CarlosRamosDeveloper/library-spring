@@ -23,10 +23,4 @@ public class LibrarySpringApplication {
 			registry.addMapping("/**");
 		}
 	}
-	//TODO: Agregar validaciones a los controladores
-	//TODO: Agregar testing
-	//TODO: Agregar documentación de los endpoints
-	//TODO: Agregar el readme^
-	//TODO: Revisar el tema de los CORS en spring
-	//TODO: Buscar acerca del rate limiting
 }

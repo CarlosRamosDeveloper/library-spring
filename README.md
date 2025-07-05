@@ -2,29 +2,45 @@
 
 This project is still in development
 
-## Setup
+## * Setup
 
 1. Create .jar
-```
-    ./mvnw clean package -DskipTests
-```
+
+    ``` bash
+
+        ./mvnw clean package -DskipTests
+    ```
+
 2. Clean old containers
-```
-    docker-compose down
-```
+
+    ``` bash
+        docker-compose down
+    ```
+
 3. Build containers
-```
-    docker-compose build
-```
+
+    ``` bash
+        docker-compose build
+    ```
+
 4. Start Virtualization
-```
-    docker-compose up
-```
+
+    ``` bash
+        docker-compose up
+    ```
 
 ## Stack
-### Backend: Spring boot
-### Database: MySQL
-### Virtualization: Docker Compose
 
-## Next steps
-### Frontend: React
+- Backend: Spring Boot 3
+- Database: MySQL
+- Virtualization: Docker
+
+## TODOs
+
+- Backend
+  - Add validations to endpoints
+  - Add tests
+  - Add endpoint documentation
+  - Add security
+  - Add rate limiting
+- Frontend: React
