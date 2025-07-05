@@ -8,7 +8,7 @@ This project is still in development
 
     ``` bash
 
-        ./mvnw clean package -DskipTests
+        ./mvnw clean package -P prod -DskipTests
     ```
 
 2. Clean old containers
