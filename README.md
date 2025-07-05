@@ -29,6 +29,12 @@ This project is still in development
         docker-compose up
     ```
 
+## Documentation
+
+``` url
+apiPathUrl/swagger.html
+```
+
 ## Stack
 
 - Backend: Spring Boot 3
